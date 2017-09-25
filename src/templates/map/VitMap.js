@@ -7,18 +7,26 @@ class VitMap extends Component {
     super(props);
     this.state = {
       address: this.props.addressData,
-      toggleFlagForMenu: false
+      menuItems: ['AnyPrice', 'Any Beds', 'Any Bath', 'More filters'],
+      isOpen: false,
+      activeItemId: ''
     };
 
-    this.clickToggleMenu = this.clickToggleMenu.bind(this);
   }
-  clickToggleMenu(e) {
+
+  onToggleButton(id, e) {
     e.preventDefault();
-    this.setState({toggleFlagForMenu: !this.state.toggleFlagForMenu});
+    this.setState({
+      activeItemId: id,
+      isOpen: !this.state.isOpen,
+    });
+
     console.log(e.currentTarget);
+
   }
+
   render() {
-    let toggleFlagForMenu = this.state.toggleFlagForMenu;
+    let menuList = this.state.menuItems;
     return (
       <div className='container'>
         <div className="row">
@@ -28,31 +36,28 @@ class VitMap extends Component {
                 <input type="text" placeholder='search'/>
                 <button>search</button>
               </section>
-              <button
-                className='v-map_filters-button'
-                onClick={this.clickToggleMenu}
-              >
-                <span>AnyPrice</span>
-                <ArrowRightFa/>
-              </button>
               {
-                toggleFlagForMenu ? <div>1</div> : ''
+                menuList.map((item, index) =>
+                  <div key={index}>
+                    <button
+                      className='v-map_filters-button'
+                      onClick={this.onToggleButton.bind(this, index)}
+                    >
+                      <span>{item}</span>
+                      <ArrowRightFa/>
+                    </button>
+                    {
+                      (this.state.activeItemId === index && this.state.isOpen) ?
+                        <div>
+                          {index}ddddddddd
+                        </div> : ''
+                    }
+
+
+                  </div>
+                )
               }
-              <div className='v-map_filters-button'>
-                <span>Any Beds</span>
-                <ArrowRightFa/>
-              </div>
-              {
-                toggleFlagForMenu ? <div>2</div> : ''
-              }
-              <div className='v-map_filters-button'>
-                <span>Any Bath</span>
-                <ArrowRightFa/>
-              </div>
-              <div className='v-map_filters-button'>
-                <span>More filters</span>
-                <ArrowRightFa/>
-              </div>
+
             </div>
           </div>
         </div>

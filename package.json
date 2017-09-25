@@ -44,7 +44,7 @@
     "webpack-dev-server": "^2.7.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server --port 3000 --hot --host 172.16.104.25"
+    "dev": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
