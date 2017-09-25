@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import VitMap from "./VitMap";
+import './map.scss';
 
 let dataForMaps = [
   {

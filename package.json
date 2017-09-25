@@ -12,6 +12,7 @@
     "react-dom": "^15.6.1",
     "react-google-maps": "^8.3.0",
     "react-highlight-words": "^0.8.1",
+    "react-icons": "^2.2.5",
     "react-redux": "^5.0.6",
     "resolve-url": "^0.2.1",
     "resolve-url-loader": "^2.1.0",
@@ -43,7 +44,7 @@
     "webpack-dev-server": "^2.7.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --port 3000 --hot --host 172.16.104.25"
   },
   "keywords": [],
   "author": "",
