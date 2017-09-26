@@ -129,6 +129,7 @@ const MapWithControlledZoom = compose(
       onCircleComplete={props.handleCircleComplete}
 
     />
+    <div>dsdsdsd</div>
     <MarkerClusterer
       averageCenter
       enableRetinaIcons
@@ -143,8 +144,7 @@ const MapWithControlledZoom = compose(
           >
             <InfoWindow onCloseClick={props.onToggleOpen}>
               <div>
-                {/*<FaAnchor/>*/}
-                {" "}
+                <img src="" alt=""/>
                 Controlled zoom: {props.zoom}
               </div>
             </InfoWindow>

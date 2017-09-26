@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MapWithControlledZoom from "./ControlledMap";
 import ArrowRightFa from 'react-icons/lib/fa/arrow-right'
+import ArrowDownFa from 'react-icons/lib/fa/arrow-down'
 
 class VitMap extends Component {
   constructor(props) {
@@ -9,20 +10,39 @@ class VitMap extends Component {
       address: this.props.addressData,
       menuItems: ['AnyPrice', 'Any Beds', 'Any Bath', 'More filters'],
       isOpen: false,
-      activeItemId: ''
+      activeItemId: '',
+      tableFlag: false
     };
+
 
   }
 
   onToggleButton(id, e) {
     e.preventDefault();
+    console.log(id);
     this.setState({
-      activeItemId: id,
-      isOpen: !this.state.isOpen,
+      activeItemId: id !== this.state.activeItemId ? id : null
     });
 
-    console.log(e.currentTarget);
 
+    console.log(this.state.isOpen);
+    console.log(this.state.activeItemId);
+  }
+
+  onChooseTableStyle(e) {
+    e.preventDefault();
+    console.log(e.target);
+    this.setState({
+      tableFlag: true
+    })
+  }
+
+  onChooseListStyle(e) {
+    e.preventDefault();
+    console.log(e.target);
+    this.setState({
+      tableFlag: false
+    })
   }
 
   render() {
@@ -38,18 +58,27 @@ class VitMap extends Component {
               </section>
               {
                 menuList.map((item, index) =>
-                  <div key={index}>
+                  <div
+                    className='v-map_filters-content-wrapper'
+                    key={index}>
                     <button
                       className='v-map_filters-button'
                       onClick={this.onToggleButton.bind(this, index)}
                     >
                       <span>{item}</span>
-                      <ArrowRightFa/>
+                      {
+                        this.state.activeItemId !== index ?
+                          <ArrowRightFa/> :
+                          <ArrowDownFa/>
+                      }
+
                     </button>
                     {
-                      (this.state.activeItemId === index && this.state.isOpen) ?
-                        <div>
-                          {index}ddddddddd
+                      (this.state.activeItemId === index) ?
+                        <div
+                          className='v-map_filters-content'
+                        >
+                          {index} ddddddddd
                         </div> : ''
                     }
 
@@ -80,34 +109,69 @@ class VitMap extends Component {
                       <option value="4">option4</option>
                     </select>
                   </div>
-                  <span>icon 1</span>
-                  <span>icon 2</span>
+                  <span
+                    onClick={(e) => this.onChooseTableStyle(e)}
+                    id='button_table'
+                  >table </span>
+                  <span
+                    onClick={(e) => this.onChooseListStyle(e)}
+                    id='button_list'
+                  >list </span>
                 </section>
-                <ul className='v-map_sidebar-list'>
-                  {
-                    this.state.address.map((element, index) =>
-                      <li key={index} className='v-map_sidebar-item'>
-                        <a href="#">
-                          <div className='v-map_sidebar-img-wrapper'>
-                            <img
-                              src="http://z500.com.ua/thumbs/700x526s20tr1/-FilesZ500-res-wizualizacje-Zx24-Zx24_view1_jpg.jpg"
-                              alt=""/>
-                          </div>
-                          <div className='v-map_sidebar-item-body'>
-                            <span>Adress{index + 1}</span>
-                            <span>wewesss</span>
-                            <span>ssdsdsd</span>
-                            <span>112345676</span>
-                            <div>
-                              <button>Button0</button>
-                              <button>Button3</button>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                    )
-                  }
-                </ul>
+                {
+                  this.state.tableFlag ?
+                    <ul className='v-map_sidebar-list'>
+                      {
+                        this.state.address.map((element, index) =>
+                          <li key={index} className='v-map_sidebar-item'>
+                            <a href="#">
+                              <div className='v-map_sidebar-img-wrapper'>
+                                <img
+                                  src="http://z500.com.ua/thumbs/700x526s20tr1/-FilesZ500-res-wizualizacje-Zx24-Zx24_view1_jpg.jpg"
+                                  alt=""/>
+                              </div>
+                              <div className='v-map_sidebar-item-body'>
+                                <span>Adress{index + 1}</span>
+                                <span>wewesss</span>
+                                <span>ssdsdsd</span>
+                                <span>112345676</span>
+                                <div>
+                                  <button>Button0</button>
+                                  <button>Button3</button>
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                        )
+                      }
+                    </ul> :
+                    <ul className='v-map_sidebar-list'>
+                      {
+                        this.state.address.map((element, index) =>
+                          <li key={index} className='v-map_sidebar-item--list'>
+                            <a href="#">
+                              <div className='v-map_sidebar-img-wrapper'>
+                                <img
+                                  src="http://z500.com.ua/thumbs/700x526s20tr1/-FilesZ500-res-wizualizacje-Zx24-Zx24_view1_jpg.jpg"
+                                  alt=""/>
+                              </div>
+                              <div className='v-map_sidebar-item-body'>
+                                <span>Adress{index + 1}</span>
+                                <span>wewesss</span>
+                                <span>ssdsdsd</span>
+                                <span>112345676</span>
+                                <div>
+                                  <button>Button0</button>
+                                  <button>Button3</button>
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                        )
+                      }
+                    </ul>
+                }
+
               </div>
             </div>
           </div>

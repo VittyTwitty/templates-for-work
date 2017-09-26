@@ -13,6 +13,8 @@ module.exports = {
     'find-home': './templates/find-home/index.js',
     'auth': './templates/auth/index.js',
     'map': './templates/map/index.js',
+    'calculator': './templates/calculator/index.js',
+    'modals': './templates/modals/index.js'
   },
   output: {
     filename: 'scripts/[name].js',
@@ -79,7 +81,7 @@ module.exports = {
       filename: 'index.html',
       alwaysWriteToDisk: true,
       template: 'index.pug',
-      excludeChunks: ['auth', 'map']
+      excludeChunks: ['auth', 'map', 'calculator']
 
     }),
     new HtmlWebpackPlugin({
@@ -87,7 +89,7 @@ module.exports = {
       filename: 'search-main.html',
       alwaysWriteToDisk: true,
       template: 'search-main.pug',
-      excludeChunks: ['find-home', 'map']
+      excludeChunks: ['find-home', 'map', 'calculator']
     }),
     new HtmlWebpackPlugin({
       title: 'My App',
