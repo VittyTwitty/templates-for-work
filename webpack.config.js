@@ -9,7 +9,7 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
     vendor: ['jquery', 'react', 'react-dom', 'highlight-words-core'],
-    index: './scripts/index.js',
+    main: './scripts/index.js',
     'find-home': './templates/find-home/index.js',
     'auth': './templates/auth/index.js',
     'map': './templates/map/index.js',
@@ -90,6 +90,13 @@ module.exports = {
       alwaysWriteToDisk: true,
       template: 'search-main.pug',
       excludeChunks: ['find-home', 'map', 'calculator']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'My App',
+      filename: 'search-map.html',
+      alwaysWriteToDisk: true,
+      template: 'search-map.pug',
+      excludeChunks: ['find-home', 'auth']
     }),
     new HtmlWebpackPlugin({
       title: 'My App',
