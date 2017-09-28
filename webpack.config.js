@@ -8,13 +8,15 @@ const resolveUrl = require("resolve-url");
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    vendor: ['jquery', 'react', 'react-dom', 'highlight-words-core'],
+    vendor: ['jquery', 'react', 'react-dom', 'highlight-words-core', 'react-redux', 'redux'],
     main: './scripts/index.js',
     'find-home': './templates/find-home/index.js',
     'auth': './templates/auth/index.js',
     'map': './templates/map/index.js',
     'calculator': './templates/calculator/index.js',
-    'modals': './templates/modals/index.js'
+    'modals': './templates/modals/index.js',
+    'redux-test': './templates/redux-training/index.js',
+    'redux-modals': './templates/redux-modals/index.js',
   },
   output: {
     filename: 'scripts/[name].js',
@@ -53,7 +55,7 @@ module.exports = {
               options: {
                 plugins: function () {
                   return [require('autoprefixer')];
-                }
+                },
               }
             },
             'resolve-url-loader',
@@ -81,7 +83,7 @@ module.exports = {
       filename: 'index.html',
       alwaysWriteToDisk: true,
       template: 'index.pug',
-      excludeChunks: ['auth', 'map', 'calculator']
+      excludeChunks: ['auth', 'map', 'calculator', 'redux-modals']
 
     }),
     new HtmlWebpackPlugin({
@@ -89,21 +91,14 @@ module.exports = {
       filename: 'search-main.html',
       alwaysWriteToDisk: true,
       template: 'search-main.pug',
-      excludeChunks: ['find-home', 'map', 'calculator']
+      excludeChunks: ['find-home', 'map', 'calculator', 'find-home', 'modals']
     }),
     new HtmlWebpackPlugin({
       title: 'My App',
       filename: 'search-map.html',
       alwaysWriteToDisk: true,
       template: 'search-map.pug',
-      excludeChunks: ['find-home', 'auth']
-    }),
-    new HtmlWebpackPlugin({
-      title: 'My App',
-      filename: 'search-map.html',
-      alwaysWriteToDisk: true,
-      template: 'search-map.pug',
-      excludeChunks: ['find-home', 'auth']
+      excludeChunks: ['find-home', 'auth', 'redux-modals']
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
