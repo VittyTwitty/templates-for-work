@@ -11,7 +11,7 @@ class VitMap extends Component {
       menuItems: ['AnyPrice', 'Any Beds', 'Any Bath', 'More filters'],
       isOpen: false,
       activeItemId: '',
-      tableFlag: false
+      tableFlag: true
     };
 
 

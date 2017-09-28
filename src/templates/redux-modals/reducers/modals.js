@@ -5,7 +5,7 @@ import {
 
 const initialState = {
   isOpenModal: false,
-  buttonId: ''
+  itemId: ''
 };
 
 export default function modals(state = initialState, action) {
@@ -14,13 +14,13 @@ export default function modals(state = initialState, action) {
       return {
         ...state,
         isOpenModal: true,
-        buttonId: action.payload
+        itemId: action.payload
       };
-    case DELETE_MODAL_TO_VIEW:
-      return {
-        ...state,
-        isOpenModalL: false
-      };
+    // case DELETE_MODAL_TO_VIEW:
+    //   return {
+    //     ...state,
+    //     isOpenModal2: false
+    //   };
     default:
       return state
   }

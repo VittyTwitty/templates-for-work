@@ -1,36 +1,37 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import ModalForm from "./ModalForm";
+import ModalShadle from "./ModalShadle";
 
 class ModalItem extends Component {
   render() {
     const {
-      buttonId,
-      isOpenModal
+      itemIdOfState
     } = this.props;
-    console.log('BUTTON ID', buttonId);
-    switch (buttonId) {
-      case 'dfdfdf':
-        return (
-          <div>
-            {
-              isOpenModal ? <div>MODAL 1</div> : ''
-            }
-          </div>
-        );
+    console.log(this.props);
+    let dialogInner;
+
+    switch (itemIdOfState) {
+      case 'redux-modals-1':
+        dialogInner = <ModalForm/>;
+        console.log(itemIdOfState);
+        break;
+      case 'redux-modals-2':
+        dialogInner = <ModalShadle/>;
+        console.log(itemIdOfState);
+        break;
       default:
-        return (
-          <div>
-            {
-              isOpenModal ? <div>MODAL 2</div> : ''
-            }
-          </div>
-        )
+        return null;
     }
+    return (
+      <div>
+        {dialogInner}
+      </div>
+    )
   }
 }
 
 ModalItem.propTypes = {
-  isOpenModal: PropTypes.bool.isRequired,
-  buttonId: PropTypes.string.isRequired
+  itemIdOfState: PropTypes.string.isRequired
 };
 export default ModalItem;

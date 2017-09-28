@@ -3,24 +3,28 @@ import PropTypes from 'prop-types';
 
 class ButtonShow extends Component {
   onOpenOneModal(e) {
-    this.props.addModalsToView('dfdfdf');
+    this.props.addModalsToView(this.props.itemId);
   }
   render() {
+
     const {
-      buttonId
+      itemId
     } = this.props;
     let buttonName;
-    switch (buttonId) {
-      case 'dfdfdf':
+
+    switch (itemId) {
+      case 'redux-modals-1':
         buttonName = 'Кнопка 1';
         break;
-      case 'dfdfdfdfdfdf':
+      case 'redux-modals-2':
         buttonName = 'Кнопка 2';
         break;
       default:
         buttonName = null
     }
-    console.log('buttonId',buttonId);
+
+
+
     return (
       <button
         onClick={this.onOpenOneModal.bind(this)}

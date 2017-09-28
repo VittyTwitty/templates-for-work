@@ -1,16 +1,11 @@
 import {ADD_MODAL_TO_VIEW, DELETE_MODAL_TO_VIEW} from "../constants/Modal";
 
-export function addModalsToView(buttonId) {
+export function addModalsToView(itemId) {
   return (dispatch) => {
     dispatch({
       type: ADD_MODAL_TO_VIEW,
-      payload: buttonId
+      payload: itemId
     });
-
-    dispatch({
-      type: DELETE_MODAL_TO_VIEW,
-      buttonId: ''
-    })
   }
 }
 

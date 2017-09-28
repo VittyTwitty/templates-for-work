@@ -7,33 +7,44 @@ import ButtonShow from "../components/ButtonShow";
 
 class App extends Component {
   render() {
+
     const {
-      isOpenModal,
-      buttonId
+      isOpenModal
     } = this.props.modals;
+    const {
+      itemIdOfState
+    } = this.props;
     const {
       addModalsToView
     } = this.props.modalActions;
-    console.log('modalActions', modalActions);
+
+    const {
+      itemId
+    } = this.props;
     return (
       <div>
         <ButtonShow
-          buttonId={buttonId}
+          itemId={itemId}
           addModalsToView={addModalsToView}
           isOpenModal={isOpenModal}
         />
-        <ModalItem
-          isOpenModal={isOpenModal}
-          buttonId={buttonId}
-        />
+        {
+          isOpenModal ? <ModalItem
+            itemIdOfState={itemIdOfState}
+          /> : ''
+        }
+
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
-    modals: state.modals
+    modals: state.modals,
+    itemIdOfState: state.modals.itemId,
+    itemId: ownProps.itemId,
+
   }
 }
 

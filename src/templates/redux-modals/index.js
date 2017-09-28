@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import App from "./containers/App";
 import configureStore from "./store/configureStore";
 
-const store = configureStore();
+const store = configureStore(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 render(
   <Provider store={store}>
