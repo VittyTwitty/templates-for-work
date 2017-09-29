@@ -16,11 +16,12 @@ export default function modals(state = initialState, action) {
         isOpenModal: true,
         itemId: action.payload
       };
-    // case DELETE_MODAL_TO_VIEW:
-    //   return {
-    //     ...state,
-    //     isOpenModal2: false
-    //   };
+    case DELETE_MODAL_TO_VIEW:
+      return {
+        ...state,
+        isOpenModal2: false,
+        itemId: ''
+      };
     default:
       return state
   }

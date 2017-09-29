@@ -15,7 +15,8 @@ class App extends Component {
       itemIdOfState
     } = this.props;
     const {
-      addModalsToView
+      addModalsToView,
+      closeModalsToView
     } = this.props.modalActions;
 
     const {
@@ -30,6 +31,8 @@ class App extends Component {
         />
         {
           isOpenModal ? <ModalItem
+            closeModalsToView={closeModalsToView}
+            itemId={itemId}
             itemIdOfState={itemIdOfState}
           /> : ''
         }

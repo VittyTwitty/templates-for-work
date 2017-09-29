@@ -12,7 +12,7 @@ class User extends Component {
       name,
       userFlag
     } = this.props;
-    console.log(this.props);
+
     return (
       <div>
         {

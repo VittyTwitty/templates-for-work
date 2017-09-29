@@ -23,7 +23,6 @@ class Login extends Component {
 
   loginSubmit(e) {
     e.preventDefault();
-    console.log(this.state)
   }
 
   render() {

@@ -20,7 +20,6 @@ class Calculator extends Component {
     this.setState({
       dataInputPayment2: e.target.value
     });
-    console.log(this.state.dataInputPayment2)
   }
 
   render() {
